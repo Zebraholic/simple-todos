@@ -1,14 +1,17 @@
 <head>
-  <title>Simple To Do List</title>
+  <title>Hinder</title>
 </head>
 
 <body>
   <div class="container">
     <header>
-      <h1>Simple To Do List</h1>
-    	<form class="new-task">
-	    	<input type="text" name="text" placeholder="Type to add new tasks" />
+      <h1>Hinder - It's like Tinder for the Undate-ables</h1>
+      {{> loginButtons}}
+      {{#if currentUser}}
+	  <form class="new-task">
+	    	<input type="text" name="text" placeholder="What's on your mind?" />
 	  	</form>
+	  	{{/if}}
     </header>
     <ul>
       {{#each tasks}}
@@ -23,8 +26,7 @@
     <button class="delete">&times;</button>
 
     <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
-
-    <span class="text">{{text}}</span>
+    <span class="text"><strong>{{username}}</strong> says: <strong>{{text}}</strong></span>	
   </li>
 </template>
 
