@@ -40,11 +40,22 @@ if (Meteor.isClient) {
   Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
   });
-  Tasks.insert({
-  text: text,
-  createdAt: new Date(),            // current time
-  owner: Meteor.userId(),           // _id of logged in user
-  username: Meteor.user().username  // username of logged in user
+  // At the bottom of simple-todos.js, outside of the client-only block
+  Meteor.methods({
+    addTask: function (text) {
+      // Make sure the user is logged in before inserting a task
+      if (! Meteor.userId()) {
+        throw new Meteor.Error("not-authorized");
+      }
+
+      Meteor.call("addTask", text);
+    },
+    deleteTask: function (taskId) {
+      Meteor.call("deleteTask", this._id);
+    },
+    setChecked: function (taskId, setChecked) {
+      Meteor.call("setChecked", this._id, ! this.checked);
+    }
   });
 }
 

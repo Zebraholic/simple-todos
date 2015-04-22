@@ -1,11 +1,12 @@
 <head>
-  <title>Hinder</title>
+  <title>Cheekey</title>
 </head>
 
 <body>
   <div class="container">
     <header>
-      <h1>Hinder - It's like Tinder for the Undate-ables</h1>
+      <h1>CHEEKEY</h1>
+      <h2>Share Silly Thoughts!</h2>
       {{> loginButtons}}
       {{#if currentUser}}
 	  <form class="new-task">
@@ -26,7 +27,7 @@
     <button class="delete">&times;</button>
 
     <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
-    <span class="text"><strong>{{username}}</strong> says: <strong>{{text}}</strong></span>	
+    <span class="text"><span class="blue">{{username}}</span> says: <strong>{{text}}</strong></span>	
   </li>
 </template>
 
